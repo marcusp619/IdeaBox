@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: grid;
+  grid-template-rows: repeat(9, 1fr);
+  height: 100vh;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+ /* align-items: center;*/
+  margin: 1em;
+  font-family: 'Roboto', sans-serif;
+  font-size: 3em;
+  color: #6D6E71;
+}
+
+.text {
+  color: #00A79D;
+}
+
+h3, p {
+  font-family: 'Roboto Slab', serif;
+}
+
+main {
+/*  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;*/
+  grid-row: 1 / span 4;
+  background-color: #E5F3F2;
+  width: 100%
+  height: 100%;
+  /*position: fixed;*/
+}
+
+/*header {
+  grid-row: 1 / span 1;
+  height: 50%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+*/
+form {
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  width: 51.5%;
+  padding: 1em;
+  margin: 1.5em;
+  background-color: #00A79D;
+}
+
+button:hover{
+  background-color: #045E55;
+}
+
+input{
+  padding: 1em;
+  margin: 1em;
+  width: 50%;
+}
+
+.search {
+  grid-row: 5 / span 1;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr); 
+  align-items: center;
+  background-color: grey;
+    width: 50%;
+    margin: 50px auto;
+}
+
+.bottom-half {
+  grid-row: 5 / span 6;
+  width: 100%;
+  height: 100%;
+}
+
+h3 {
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 1;
+  display: inline-block;
+}
+
+p {
+  display: block;
+  grid-column: 1 / span 2;
+/*  margin-top: 6em;*/
+}
+.delete-btn {
+  width: 1.5em;
+  height: auto;
+  align-self: end;
+}
+
+.down-arrow, .up-arrow {
+  display: inline-block;
+  grid-row: 3 / span 1;
+  grid-column: 1 / span 1;
+  width: 1.5em;
+  height: auto;
+}
