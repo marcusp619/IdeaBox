@@ -13,7 +13,7 @@ function saveIdea(e) {
   var ideaBody = document.querySelector('.idea-body').value;
 
   var idea = new Idea(ideaTitle, ideaBody);
-  appendElement(obj);
+  appendElement(idea);
   if (localStorage.getItem('idea') === null){    
     storedItems.push(idea);
     console.log(storedItems);
@@ -21,8 +21,8 @@ function saveIdea(e) {
   }
 }
 
-fucntion appendElement(obj) {
-
+function appendElement(obj) {
+ console.log(obj);
 }
 
 saveBtn.addEventListener('click', saveIdea);
