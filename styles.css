@@ -73,6 +73,7 @@ h3 {
 }
 
 input{
+  border: 2px solid #D1D3D4;
   font-size: 1em;
   margin: 7px 0;
   padding: 5px;
