@@ -43,14 +43,14 @@ form {
   align-items: center;
 }
 
-button {
+.save-btn {
   width: 51.5%;
   padding: 1em;
   margin: 1.5em;
   background-color: #00A79D;
 }
 
-button:hover{
+.save-btn:hover{
   background-color: #045E55;
 }
 
@@ -79,7 +79,7 @@ input::placeholder {
   height: 200px;
 }
 
-.card {
+li, .card {
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(2, 1fr); 
@@ -108,10 +108,11 @@ p {
   margin: 1em 0;
 
 }
-.delete-btn {
+.delete-btn, .delete {
   float: right;
-  width: 1.5em;
+  width: 2em;
   height: auto;
+  border-style: none;
 }
 
 .quality-rate{
@@ -119,12 +120,13 @@ p {
   grid-column: 1 / span 1;
   margin-left: 5em;
 }
-.down-arrow, .up-arrow {
+.down-arrow, .up-arrow, .up, .down {
   display: inline-block;
   grid-row: 3 / span 1;
   grid-column: 1 / span 1;
-  width: 1.5em;
+  width: 2em;
   height: auto;
+  border-style: none;
 }
 .down-arrow {
   margin-left: 2.5em;
