@@ -10,15 +10,17 @@ function appendList() {
         newIdea.innerText = null
     } else {
         newIdea.innerHTML =`
-        <h3 contenteditable>${ideaTitle.value}</h3>
-        <span> <button class="delete">
-        <img class="delete-btn"src="images/delete.svg"></button></span>
-        <p contenteditable>${ideaBody.value}</p>
-        <span class="up-arrow"><button class="up">
-        <img class= "down" src="images/upvote.svg"></button></span>
-        <span class="down-arrow">
-        <button class="down"><img src="images/downvote.svg"></button></span>
-        <span class="quality-rate">quality:</span>`
+        <li class="card">
+          <h3 contenteditable>${ideaTitle.value}</h3> 
+          <span class="delete-container"><button class="delete">
+          <img class="delete-btn"src="images/delete.svg" ></button></span>
+          <p contenteditable>${ideaBody.value}</p> 
+          <span class="up-arrow"><button class="up">
+          <img src="images/upvote.svg"></button></span>
+          <span class="down-arrow">
+          <button class="down"><img class="down"src="images/downvote.svg"></button></span>
+          <span class="quality-rate">quality:</span>
+        </li>`
         var listIdeas = document.querySelector("ul");
         listIdeas.appendChild(newIdea);
     }
