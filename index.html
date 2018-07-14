@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab:400,700" rel="stylesheet">
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title></title>
@@ -8,8 +9,9 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <main>
   <header>
-    <h1> <span>idea</span>box
+    <h1> <span class="text">idea</span>box
     </h1>
   </header>
   <section>
@@ -19,24 +21,23 @@
       <button>Save</button>
     </form>
   </section>
-  <section role="feed">
-    <input type="Search" placeholder="Search">
-    <div class="card" >
-      <h3>Expample Idea 1</h3> 
-      <span>button</span>
-      <p>test test test test test test test test test test test test</p> 
-      <span class="up-arrow">button</span>
-      <span class="down-arrow">button</span>
-      <span class="quality-rate">quality</span>
-    </div>
-    <div class="card">
-      <h3>Expample Idea 1</h3> 
-      <span>button</span>
-      <p>test test test test test test test test test test test test</p>
-      <span class="up-arrow">button</span>
-      <span class="down-arrow">button</span>
-      <span class="quality-rate">quality</span>
-    </div>
+</main>
+  <section role="feed" class="bottom-half">
+    <form class="search">
+      <input class = "search-bar" type="Search" placeholder="Search">
+    </form>
+  <ul>
+    <li class="card">
+      <h3> Example Idea 1 </h3> 
+      <span> <img class="delete-btn"src="images/delete.svg" ></span>
+      <p> test test test test test test test test test test test test 
+      </p> 
+      <span class="up-arrow"><img src="images/upvote.svg"></span>
+      <span class="down-arrow"><img src="images/downvote.svg"></span>
+      <span class="quality-rate">quality:</span>
+    </li>
+  </ul>
+  </section>
   <script src="script.js"></script>
 </body>
 </html>
