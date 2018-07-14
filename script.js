@@ -21,7 +21,8 @@ function saveIdea(e) {
     storedItems.push(idea);
     console.log(storedItems);
     localStorage.setItem('storedItems', JSON.stringify(storedItems));
-    appendList()
+    appendList();
+    clearOut();
   }
 }
 
@@ -31,17 +32,16 @@ function appendElement(obj) {
 
 saveBtn.addEventListener('click', saveIdea);
 
-
 function appendList() {
     var newIdea = document.createElement('li');
     if (ideaTitle.value == 0 || ideaBody.value == 0) {
         newIdea.innerText = null
     } else {
         newIdea.innerHTML =`
-        <h3>${ideaTitle.value}</h3>
+        <h3 contenteditable>${ideaTitle.value}</h3>
         <span> <button class="delete">
         <img class="delete-btn"src="images/delete.svg"></button></span>
-        <p>${ideaBody.value}</p>
+        <p contenteditable>${ideaBody.value}</p>
         <span class="up-arrow"><button class="up">
         <img class= "down" src="images/upvote.svg"></button></span>
         <span class="down-arrow">
@@ -59,4 +59,10 @@ unorderedList.addEventListener('click', function(e) {
     console.log('delete me')
     console.log(e)
 })
+
+function clearOut() {
+  ideaTitle.value = '';
+  ideaBody.value = '';
+}
+
 
