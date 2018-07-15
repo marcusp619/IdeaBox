@@ -170,9 +170,16 @@ ul {
   color: #6D6E71;
 }
 
+
 /* State */
-button:hover{
+.save-btn:hover{
   background-color: #045E55;
 }
+
+.up:hover {
+  background-image: url('images/upvote-hover.svg');
+
+}
+
 
 /* Theme */
