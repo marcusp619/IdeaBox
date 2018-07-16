@@ -185,7 +185,7 @@ display: inline-block;
 body {
   display: grid;
   grid-template-rows: repeat(6, 1fr);
-  height: 100vh;
+ /* height: 100vh;*/
   font-family: 'Open Sans';
 }
  main {
