@@ -177,10 +177,6 @@ ul {
 }
 
 /* Theme */
-/*meta {
-display: inline-block;
-}
-*/
  @media screen and (max-width: 800px) {
 body {
   display: grid;
@@ -214,7 +210,5 @@ body {
 textarea {
   height: 150px;
 }
-
-
 }
 
