@@ -1,5 +1,4 @@
 /* Base */
-
 html {
   box-sizing: border-box;
   font-size: 16px;
@@ -25,196 +24,123 @@ img {
 }
 
 /* Layout */
-body {
-  display: grid;
-  grid-template-rows: repeat(9, 1fr);
-  height: 100%;
-  font-family: 'Open Sans';
-}  
-
-button {
-  background-color: #00A79D;
-  border: none;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 700;
-  margin: 7px 0;
-  padding: 5px;
-  width: 50%;
-}
-
 form {
-  margin-bottom: 1em;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas: ". title ."
+                      ". body ."
+                      ". save .";
   justify-content: center;
-  align-items: center;
-  height: 100%;
+  width: 100%;
 }
 
-h1, h3 {
- font-family: 'Roboto'; 
- font-weight: 700;
+header {
+  text-align: center;
 }
 
 h1 {
-  display: flex;
-  justify-content: center;
-  margin: 20px;
-  font-size: 3em;
+  font-size: 2.5rem;
+  font-weight: 800;
   color: #6D6E71;
+  padding: 20px;
 }
 
-h3 {
-  color: #6D6E71;
-  display: inline-block;
-  grid-row: 1 / span 1;
-  grid-column: 1 / span 1;
-  padding-top: 2px;
-}
-
-input, textarea {
-  border: 2px solid #D1D3D4;
-  font-size: 1em;
-  margin: 7px 0;
-  padding: 5px;
-  width: 50%;
-}
-
-main {
-  grid-row: 1 / span 4;
-  background-color: #E5F3F2;
-  width: 100%
-  height: 100%;
-}
-
-ul {
-  margin-top: -5%;
-}
-
-/* Module */
-.bottom-half {
-  grid-row: 5 / span 6;
-  width: 100%;
-  height: 100%;
-}
-
-.card {
-  align-items: center;
-  border-bottom: 1px solid #D1D3D4;
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-columns: repeat(2, 1fr); 
-  margin: 100px auto;
-  width: 50%;
-}
-.card p {
-  color: #939598;
-  display: block;
-  grid-column: 1 / span 2;
-  margin-bottom: 15px;
-}
-
-.delete-btn {
- max-width: 20px;
-}
-
-.delete-container {
-  justify-self: flex-end;
-}
-
-.delete-container img {
-  width: 50px;
-}
-
-.delete, .down, .up  {
-  background: none;
-}
-
-.down, .up {
-  width: 30px;
-}
-
-.down-arrow, .up-arrow {
-  display: inline-block;
-  grid-row: 3 / span 1;
-  grid-column: 1 / span 1;
-  width: 25px;
-  height: auto;
-}
-
-.down-arrow {
-  margin-left: 2.5em;
-}
-
-.search {
-  grid-row: 5 / span 1;
-  height: 20%;
-  align-items: center;
-}
-
-.search input {
-  font-size: 1.2em;
-  padding: 0 5px;
-}
-
-.text {
+h1 span {
   color: #00A79D;
 }
 
-.quality-rate{
-  grid-row: 3 / span 1;
-  grid-column: 1 / span 1;
-  margin-left: 5em;
-  margin-top: -8px;
+h3 {
+  display: inline-block;
+  font-size: 1.5rem;
+  color: #6D6E71;
+  margin: 5px 0;
+}
+
+input {
+  display: block;
+  width: 100%;
+  border: 2px solid #D1D3D4;
+  font-size: 1em;
+  padding: 4px;
+}
+
+.upper-half {
+  background-color: #E5F3F2;
+}
+
+.search-input {
+  width: 33.333%;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+/* Module */
+.bottom-row {
+}
+
+.down-btn, .up-btn, .quality-rate {
+  margin-right: 10px;
+}
+
+.idea-title {
+  grid-area: title;
+}
+
+.idea-body {
+  grid-area: body;
+}
+
+.idea-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.idea-item {
+  border-bottom: 2px solid #D1D3D4;
+  grid-column: 2;
+  padding: 15px 0;
+}
+
+.idea-item p {
+  margin: 10px 0;
+  color: #939598;
+}
+
+.delete-btn {
+/*   display: inline-block; */
+}
+
+.top-row {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+
+.save-btn {
+  background-color: #00A79D;
+  color: #fff;
+  font-size: 1em;
+  grid-area: save;
+  margin-bottom: 20px;
+  padding: 7px 0;
+}
+
+.down-btn {
+  display: inline;
+}
+
+.up-btn {
+  display: inline;
+}
+
+.quality-rate {
   color: #6D6E71;
 }
-
-
 /* State */
-.save-btn:hover{
-  background-color: #045E55;
-}
 
 /* Theme */
-/*meta {
-display: inline-block;
-}
-*/
- @media screen and (max-width: 800px) {
-body {
-  display: grid;
-  grid-template-rows: repeat(6, 1fr);
- /* height: 100vh;*/
-  font-family: 'Open Sans';
-}
- main {
-  grid-row: 1 / span 3;
-  background-color: #E5F3F2;
-  width: 100%
-  height: 100%;
-}
-.bottom-half {
-  grid-row: 4 / span 2;
-  width: 100%;
-  height: 100%;
-}
-
-.search {
-  grid-row: 6 / span 1;
-  height: 20%;
-  align-items: center;
-}
-
-.search input {
-  font-size: 1.2em;
-  padding: 0 5px;
-}
-
-textarea {
-  height: 150px;
-}
-
-
-}
-

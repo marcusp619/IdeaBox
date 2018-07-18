@@ -11,25 +11,64 @@
 </head>
 <body>
   <main>
-  <header>
-    <h1> <span class="text">idea</span>box
-    </h1>
-  </header>
-  <section>
+  <section class="upper-half">
+    <header>
+      <h1><span>idea</span>box</h1>
+    </header>
     <form>
-      <input type="text" class="idea-title" placeholder="Title" aria-label="note title">
-      <textarea type="text" class="idea-body" placeholder="Body"aria-label="note message"></textarea>
+      <div class="idea-title">
+        <label for="">
+          <input type="text" class="input-title"  placeholder="Title"> 
+        </label>  
+      </div>
+      <div class="idea-body">
+        <label for="">
+          <input type="text" class="input-body"  placeholder="Body"> 
+        </label>
+      </div>
       <button class="save-btn">save</button>
     </form>
   </section>
-</main>
-  <section role="feed" class="bottom-half">
-    <form class="search">
-      <input class = "search-bar" type="Search" placeholder="Search">
+  <section class="lower-half">
+    <form class="search-form">
+      <input type="search" class="search-input" placeholder="Search">
     </form>
-  <ul class="idea-list">
-  </ul>
+    <ul class="idea-list">
+<!--       <li class="idea-item">
+        <div class="top-row">
+          <h3>Idea 1</h3>
+          <button class="delete-btn">button</button>
+        </div>  
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam, eum! Iure sint aliquid laboriosam deleniti error </p>
+        <button class="up-btn">up</button>
+        <button class="down-btn">down</button>
+        <span class="quality-rate">quality: swill</span>
+      </li>
+      <li class="idea-item">
+        <div class="top-row">
+          <h3>Look me up</h3>
+          <button class="delete-btn">button</button>
+        </div>  
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam, eum! Iure sint aliquid laboriosam deleniti error </p>
+        <button class="up-btn">up</button>
+        <button class="down-btn">down</button>
+        <span class="quality-rate">quality: swill</span>
+      </li>
+      <li class="idea-item">
+        <div class="top-row">
+          <h3>try me</h3>
+          <button class="delete-btn">button</button>  
+        </div>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam, eum! Iure sint aliquid laboriosam deleniti error</p>
+        <div class="bottom-row">
+          <button class="up-btn">up</button>
+          <button class="down-btn">down</button>
+          <span class="quality-rate">quality: swill</span>
+        </div>
+      </li> -->
+    </ul>
   </section>
+</main>
   <script src="script.js"></script>
 </body>
 </html>
