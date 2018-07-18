@@ -5,7 +5,7 @@ var storedItems = [];
 var unorderedList = document.querySelector('ul');
 var upBtn;
 var quality = 'swill'
-
+var filterInput = document.querySelector('.search-bar');
 
 function appendList(e) {
     var newIdea = document.createElement('li');
@@ -13,7 +13,7 @@ function appendList(e) {
         newIdea.innerText = null
     } else {
         newIdea.innerHTML =`
-        <li class="card">
+        <li class="card idea-item">
           <h3 contenteditable>${ideaTitle.value}</h3> 
           <span class="delete-container"><button class="delete">
           <img class="delete-btn" src="images/delete.svg" ></button></span>
@@ -46,6 +46,20 @@ function deleteItem(e) {
   }
 }
 
+function filterNames() {
+  var filterValue = filterInput.value.toUpperCase();
+  var ul = document.querySelector('.idea-list');
+  var li = ul.querySelectorAll('.idea-item');
+  for (var i = 0; i < li.length; i++) {
+    var title = li[i].getElementsByTagName('h3')[0];
+    if (title.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
+      li[i].style.display = '';      
+    } else {
+        li[i].style.display = 'none';
+      }
+    }
+}
+
 function saveIdea(e) {
   e.preventDefault();
   var ideaTitle = document.querySelector('.idea-title').value;
@@ -60,6 +74,8 @@ function saveIdea(e) {
 }
 
 saveBtn.addEventListener('click', saveIdea);
+
+filterInput.addEventListener('keyup', filterNames);
 
 unorderedList.addEventListener('click', deleteItem);
 
