@@ -7,17 +7,17 @@ var upBtn;
 var quality = 'swill'
 var filterInput = document.querySelector('.search-bar');
 
-function appendList(e) {
+function appendList(title, body) {
     var newIdea = document.createElement('li');
-    if (ideaTitle.value == 0 || ideaBody.value == 0) {
+    if (title == 0 || body == 0) {
         newIdea.innerText = null
     } else {
         newIdea.innerHTML =`
-        <li class="card idea-item">
-          <h3 contenteditable>${ideaTitle.value}</h3> 
+        <li class="card">
+          <h3 contenteditable>${title}</h3> 
           <span class="delete-container"><button class="delete">
           <img class="delete-btn" src="images/delete.svg" ></button></span>
-          <p contenteditable>${ideaBody.value}</p> 
+          <p contenteditable>${body}</p> 
           <span class="up-arrow"><button class="up"><img class="up-pic" src="images/upvote.svg">
           </button></span>
           <span class="down-arrow">
@@ -69,10 +69,34 @@ function saveIdea(e) {
   if (localStorage.getItem('idea') === null){    
     storedItems.push(idea);
     localStorage.setItem('storedItems', JSON.stringify(storedItems));
-    appendList();
+    appendList(ideaTitle, ideaBody);
     clearOut();
   }
 }
+
+document.addEventListener("DOMContentLoaded", function(){
+  if (localStorage !== null){
+    var savedIdeas = JSON.parse(localStorage.getItem('storedItems'))
+    for (i = 0; i < savedIdeas.length; i++){
+    //this keeps readds everything that was already in storage after refresh
+      storedItems.push(savedIdeas[i]);
+      localStorage.setItem('storedItems', JSON.stringify(storedItems));
+      appendList(savedIdeas[i].title, savedIdeas[i].idea)
+    }
+  }
+});
+
+
+
+//update localStorage when we edit a field
+//update localStorage when we delete a card
+//update localStorage when we update the quality 
+
+// unorderedList.addEventListener('keyup', function(e) {
+//   console.log(e)
+// })
+
+
 
 saveBtn.addEventListener('click', saveIdea);
 
@@ -80,26 +104,32 @@ filterInput.addEventListener('keyup', filterNames);
 
 unorderedList.addEventListener('click', deleteItem);
 
+unorderedList.addEventListener('click', function(e) {
+    e.preventDefault();
+    if (e.target.className === 'delete-btn') {
+        e.target.parentNode.parentNode.parentNode.remove(document.querySelector('ul'));
+    } 
+});
+
 unorderedList.addEventListener('mouseover', function(e) {
   e.preventDefault();
-  if (e.target.className === 'up') {
-    e.target.childNodes[0].removeAttribute('src');
-    e.target.childNodes[0].setAttribute('src', 'images/upvote-hover.svg')
+  if (e.target.className === 'up-pic') {
+    e.target.removeAttribute('src');
+    e.target.setAttribute('src', 'images/upvote-hover.svg')
   }
 })
 
 unorderedList.addEventListener('mouseout', function(e) {
   e.preventDefault();
-  if (e.target.className === 'up') {
-    e.target.childNodes[0].removeAttribute('src');
-    e.target.childNodes[0].setAttribute('src', 'images/upvote.svg');
+  if (e.target.className === 'up-pic') {
+    e.target.removeAttribute('src');
+    e.target.setAttribute('src', 'images/upvote.svg');
   }
 })
 
-
 unorderedList.addEventListener('mouseover', function(e) {
   e.preventDefault();
-  if (e.target.className === 'down') {
+  if (e.target.className === 'down-pic') {
     e.target.removeAttribute('src');
     e.target.setAttribute('src', 'images/downvote-hover.svg')
   }
@@ -107,25 +137,26 @@ unorderedList.addEventListener('mouseover', function(e) {
 
 unorderedList.addEventListener('mouseout', function(e) {
   e.preventDefault();
-  if (e.target.className === 'down') {
+  if (e.target.className === 'down-pic') {
     e.target.removeAttribute('src');
     e.target.setAttribute('src', 'images/downvote.svg');
   }
 })
 
-
 unorderedList.addEventListener('mouseover', function(e) {
-  e.preventDefault();
-  if (e.target.className === 'delete-btn') {
-    e.target.childNodes[0].setAttribute('src', 'images/delete-hover.svg')
-  }
-})
+    e.preventDefault();
+    if (e.target.className === 'delete-btn') {
+        e.target.removeAttribute('src')
+        e.target.setAttribute('src','images/delete-hover.svg');
+    } 
+});
 
 unorderedList.addEventListener('mouseout', function(e) {
   e.preventDefault();
   if (e.target.className === 'delete-btn') {
-    e.target.childNodes[0].removeAttribute('src');
-    e.target.childNodes[0].setAttribute('src', 'images/delete.svg');
+    e.target.removeAttribute('src');
+    e.target.setAttribute('src', 'images/delete.svg')
+  console.log('mouseover')
   }
 })
 
@@ -134,7 +165,7 @@ unorderedList.addEventListener('click', function(e) {
   if (e.target.className === 'up-pic' && quality === 'swill') {
     quality = "plausible";
     document.querySelector('.quality-btn').innerText = "quality: plausible";
-  }else if (e.target.className === 'up-pic' && quality === 'plausible'){
+  } else if (e.target.className === 'up-pic' && quality === 'plausible'){
     quality = "genuis";
     document.querySelector('.quality-btn').innerText = "quality: genuis";
   }
@@ -145,15 +176,9 @@ unorderedList.addEventListener('click', function(e) {
   if (e.target.className === 'down-pic' && quality === 'genuis') {
     quality = "plausible";
     document.querySelector('.quality-btn').innerText = "quality: plausible";
-  }else if (e.target.className === 'down-pic' && quality === 'plausible'){
+  } else if (e.target.className === 'down-pic' && quality === 'plausible'){
     quality = "swill";
     document.querySelector('.quality-btn').innerText = "quality: swill";
   }
     })
 
-unorderedList.addEventListener('click', function(e) {
-  e.preventDefault();
-  if (e.target.className === 'down') {
-    document.querySelector('.quality-btn').innerText = "plausible"
-  } 
-})
