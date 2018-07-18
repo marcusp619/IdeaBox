@@ -34,10 +34,11 @@ function clearOut() {
   ideaBody.value = '';
 }
 
-function Idea(title, idea, quality) {
+function Idea(title, idea, quality, id) {
   this.title = title;
   this.idea = idea;
-  this.quality = 'swill';
+  this.quality = quality || 'swill';
+  this.id = id || Date.now();
 }
 
 function deleteItem(e) {
@@ -114,11 +115,9 @@ unorderedList.addEventListener('mouseout', function(e) {
 
 
 unorderedList.addEventListener('mouseover', function(e) {
-  console.log(e);
   e.preventDefault();
   if (e.target.className === 'delete-btn') {
     e.target.childNodes[0].setAttribute('src', 'images/delete-hover.svg')
-  console.log('mouseover')
   }
 })
 
