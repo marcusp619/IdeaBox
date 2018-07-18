@@ -7,7 +7,7 @@ var upBtn;
 var quality = 'swill'
 
 
-function appendList() {
+function appendList(e) {
     var newIdea = document.createElement('li');
     if (ideaTitle.value == 0 || ideaBody.value == 0) {
         newIdea.innerText = null
@@ -40,6 +40,12 @@ function Idea(title, idea, quality) {
   this.quality = 'swill';
 }
 
+function deleteItem(e) {
+  if (e.target.className === 'delete-btn') {
+    e.target.parentNode.parentNode.parentNode.remove(document.querySelector('ul'));
+  }
+}
+
 function saveIdea(e) {
   e.preventDefault();
   var ideaTitle = document.querySelector('.idea-title').value;
@@ -55,12 +61,7 @@ function saveIdea(e) {
 
 saveBtn.addEventListener('click', saveIdea);
 
-unorderedList.addEventListener('click', function(e) {
-    e.preventDefault();
-    if (e.target.className === 'delete-btn') {
-        e.target.parentNode.parentNode.parentNode.remove(document.querySelector('ul'));
-    } 
-});
+unorderedList.addEventListener('click', deleteItem);
 
 unorderedList.addEventListener('mouseover', function(e) {
   e.preventDefault();
