@@ -24,25 +24,10 @@ function appendList() {
           <button class="down"><img class="down-pic" src="images/downvote.svg"></button></span>
           <span class="quality-rate"><p class="quality-btn">quality: <span class="quality">${quality}</span></p></span>
         </li>`
-        console.log("this is the button" + upBtn)
-        // searchIdeas()
         var listIdeas = document.querySelector("ul");
         listIdeas.appendChild(newIdea);
     }
 }
-
-// function searchIdeas(){
-//   var search = document.querySelector('.search');
-//   var ul = document.querySelector('ul');
-//   var filter = search.value.toUpperCase();
-//   for (i = 0; i < ul.length; i++) {
-//      if (ideaTitle.value.innerHTML.toUpperCase().indexOf(filter) > -1 || ideaBody.value.innerHTML.toUpperCase().indexOf(filter) > -1) {
-//             ideaTitle[i].style.display = "";
-//             ideaBody[i].style.display ="";
-//   }
-// }
-// }
-
 
 function clearOut() {
   ideaTitle.value = '';
@@ -60,10 +45,8 @@ function saveIdea(e) {
   var ideaTitle = document.querySelector('.idea-title').value;
   var ideaBody = document.querySelector('.idea-body').value;
   var idea = new Idea(ideaTitle, ideaBody);
-  console.log(localStorage.getItem('idea'));
   if (localStorage.getItem('idea') === null){    
     storedItems.push(idea);
-    console.log(storedItems);
     localStorage.setItem('storedItems', JSON.stringify(storedItems));
     appendList();
     clearOut();
@@ -117,7 +100,6 @@ unorderedList.addEventListener('mouseover', function(e) {
   console.log(e);
   e.preventDefault();
   if (e.target.className === 'delete-btn') {
-    // e.target.childNodes[0].removeAttribute('src');
     e.target.childNodes[0].setAttribute('src', 'images/delete-hover.svg')
   console.log('mouseover')
   }
@@ -136,54 +118,26 @@ unorderedList.addEventListener('click', function(e) {
   if (e.target.className === 'up-pic' && quality === 'swill') {
     quality = "plausible";
     document.querySelector('.quality-btn').innerText = "quality: plausible";
-    console.log(quality)
   }else if (e.target.className === 'up-pic' && quality === 'plausible'){
     quality = "genuis";
     document.querySelector('.quality-btn').innerText = "quality: genuis";
-    console.log(quality)
   }
     })
-//   }
-// })
 
 unorderedList.addEventListener('click', function(e) {
   e.preventDefault();
   if (e.target.className === 'down-pic' && quality === 'genuis') {
     quality = "plausible";
     document.querySelector('.quality-btn').innerText = "quality: plausible";
-    console.log(quality)
   }else if (e.target.className === 'down-pic' && quality === 'plausible'){
     quality = "swill";
     document.querySelector('.quality-btn').innerText = "quality: swill";
-    console.log(quality)
   }
     })
-
-
-
-
-
-// if quality is pluasible, click upbtn and quality will be swill
-// if quality is swill, click upbtn and quality will be genuis
 
 unorderedList.addEventListener('click', function(e) {
   e.preventDefault();
   if (e.target.className === 'down') {
     document.querySelector('.quality-btn').innerText = "plausible"
-    console.log('is this working? ')
   } 
 })
-
-// funtion qualityCycle(){
-//   if (quality === 'swill'){
-//     document.querySelector('.quality-btn').innerText = "plausible"
-//   } else if (quality === 'plausible'){
-//     document.querySelector('.quality-btn').innerText = "genuis"
-//   } else {
-//   quality = quality
-//   }
-// }
-
-
-
-
