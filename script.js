@@ -34,10 +34,11 @@ function clearOut() {
   ideaBody.value = '';
 }
 
-function Idea(title, idea, quality) {
+function Idea(title, idea, quality, id) {
   this.title = title;
   this.idea = idea;
-  this.quality = 'swill';
+  this.quality = quality || 'swill';
+  this.id = id || Date.now();
 }
 
 function deleteItem(e) {
@@ -142,7 +143,6 @@ unorderedList.addEventListener('mouseout', function(e) {
   }
 })
 
-
 unorderedList.addEventListener('mouseover', function(e) {
     e.preventDefault();
     if (e.target.className === 'delete-btn') {
@@ -165,7 +165,7 @@ unorderedList.addEventListener('click', function(e) {
   if (e.target.className === 'up-pic' && quality === 'swill') {
     quality = "plausible";
     document.querySelector('.quality-btn').innerText = "quality: plausible";
-  }else if (e.target.className === 'up-pic' && quality === 'plausible'){
+  } else if (e.target.className === 'up-pic' && quality === 'plausible'){
     quality = "genuis";
     document.querySelector('.quality-btn').innerText = "quality: genuis";
   }
@@ -176,7 +176,7 @@ unorderedList.addEventListener('click', function(e) {
   if (e.target.className === 'down-pic' && quality === 'genuis') {
     quality = "plausible";
     document.querySelector('.quality-btn').innerText = "quality: plausible";
-  }else if (e.target.className === 'down-pic' && quality === 'plausible'){
+  } else if (e.target.className === 'down-pic' && quality === 'plausible'){
     quality = "swill";
     document.querySelector('.quality-btn').innerText = "quality: swill";
   }
