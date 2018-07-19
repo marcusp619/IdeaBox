@@ -17,7 +17,7 @@ function appendList(e) {
     } else {
         newIdea.innerHTML =`
         <li class="card">
-          <h3 class="fix" contenteditable data-name=${ideaId}>${ideaTitle}</h3> 
+          <h3 contenteditable data-name=${ideaId}>${ideaTitle}</h3> 
           <span class="delete-container"><button class="delete">
           <img class="delete-btn" src="images/delete.svg" ></button></span>
           <p contenteditable>${ideaBody}</p> 
@@ -76,7 +76,8 @@ function saveIdea(ideaTitle, ideaBody, ideaId) {
   }
 }
 
-function editIdea() {
+function editIdea(e) {
+  console.log(e.target.data);
   var ideaBody = document.querySelector('p').innerText;
   var ideaTitle = document.querySelector('h3').innerText;
   var element = document.querySelector('h3').getAttribute('data-name');
@@ -100,10 +101,10 @@ filterInput.addEventListener('keyup', filterNames);
 
 unorderedList.addEventListener('click', deleteItem);
 
-unorderedList.addEventListener('keypress', function(e) {
+unorderedList.addEventListener('keyup', function(e) {
   var key = e.which || e.keyCode;
-  if (key === 13) {
-    editIdea();
+  if (e.target.className === 'fix'){
+    editIdea(e);
   }
 });
 
