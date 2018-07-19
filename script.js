@@ -16,11 +16,11 @@ function appendList(e) {
         newIdea.innerText = null
     } else {
         newIdea.innerHTML =`
-        <li class="card">
-          <h3 contenteditable data-name=${ideaId}>${ideaTitle}</h3> 
+        <li class="card" data-name=${ideaId}>
+          <h3 class="edit-h" contenteditable >${ideaTitle}</h3> 
           <span class="delete-container"><button class="delete">
           <img class="delete-btn" src="images/delete.svg" ></button></span>
-          <p contenteditable>${ideaBody}</p> 
+          <p class="edit-p" contenteditable>${ideaBody}</p> 
           <span class="up-arrow"><button class="up"><img class="up-pic" src="images/upvote.svg">
           </button></span>
           <span class="down-arrow">
@@ -46,11 +46,12 @@ function Idea(title, idea, id, quality) {
 }
 
 function deleteItem(e) {
-  var element = document.querySelector('h3').getAttribute('data-name');
+  var element = $(e.target).parent().data('name');
+  console.log(element);
   if (e.target.className === 'delete-btn') {
     e.target.parentNode.parentNode.parentNode.remove(document.querySelector('ul'));
   }
-  // localStorage.removeItem(element);
+  localStorage.removeItem(element);
 }
 
 function filterNames() {
@@ -77,24 +78,17 @@ function saveIdea(ideaTitle, ideaBody, ideaId) {
 }
 
 function editIdea(e) {
-  console.log(e.target.data);
-  var ideaBody = document.querySelector('p').innerText;
-  var ideaTitle = document.querySelector('h3').innerText;
-  var element = document.querySelector('h3').getAttribute('data-name');
-  saveIdea(ideaTitle, ideaBody, element);
+  var elementId = $(e.target).parent().data('name');
+  var ideaBody = $(e.target).parent().find('p').text(); 
+  var ideaTitle = $(e.target).parent().find('h3').text();
+  saveIdea(ideaTitle, ideaBody, elementId);
 }
 
-// document.addEventListener("DOMContentLoaded", function(){
-//   if (localStorage !== null){
-//     var savedIdeas = JSON.parse(localStorage.getItem('storedItems'))
-//     for (i = 0; i < savedIdeas.length; i++){
-//     //this keeps readds everything that was already in storage after refresh
-//       storedItems.push(savedIdeas[i]);
-//       localStorage.setItem('storedItems', JSON.stringify(storedItems));
-//       appendList(savedIdeas[i].title, savedIdeas[i].idea)
-//     }
-//   }
-// });
+ document.addEventListener("DOMContentLoaded", function(){
+   for (var i = 0; i < localStorage.length; i++) {
+    console.log(localStorage.getItem(localStorage.key(i)));
+   }
+ });
 saveBtn.addEventListener('click', appendList);
 
 filterInput.addEventListener('keyup', filterNames);
@@ -103,7 +97,7 @@ unorderedList.addEventListener('click', deleteItem);
 
 unorderedList.addEventListener('keyup', function(e) {
   var key = e.which || e.keyCode;
-  if (e.target.className === 'fix'){
+  if (key === 13){
     editIdea(e);
   }
 });
