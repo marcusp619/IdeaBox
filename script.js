@@ -6,16 +6,21 @@ var unorderedList = document.querySelector('ul');
 var quality = 'swill'
 var filterInput = document.querySelector('.search-bar');
 
-function appendList(e) {
+function appendList(e)  {
     e.preventDefault();
     var ideaId = Date.now();
     var ideaTitle = document.querySelector('.idea-title').value;
     var ideaBody = document.querySelector('.idea-body').value;
-    var newIdea = document.createElement('li');
     if (ideaTitle == 0 || ideaBody == 0) {
         newIdea.innerText = null
     } else {
-        newIdea.innerHTML =`
+        addNewCard(ideaId, ideaTitle, ideaBody)
+    }
+}
+
+function addNewCard(ideaId, ideaTitle, ideaBody, quality='swill'){
+  var newIdea = document.createElement('li');
+  newIdea.innerHTML =`
         <li class="card" data-name=${ideaId}>
           <h3 class="edit-h" contenteditable >${ideaTitle}</h3> 
           <span class="delete-container"><button class="delete">
@@ -30,7 +35,6 @@ function appendList(e) {
         var listIdeas = document.querySelector("ul");
         saveIdea(ideaTitle, ideaBody, ideaId);
         listIdeas.appendChild(newIdea);
-    }
 }
 
 function deleteItem(e) {
@@ -94,10 +98,19 @@ function editIdea(e) {
 }
 
  document.addEventListener("DOMContentLoaded", function(){
-   for (var i = 0; i < localStorage.length; i++) {
-    console.log(localStorage.getItem(localStorage.key(i)));
+  if (localStorage.length > 0){
+  for(var key in localStorage){
+      idea = JSON.parse(localStorage.getItem(key))
+      addNewCard(idea.id, idea.title, idea.idea, idea.quality) 
    }
+ }
  });
+
+
+
+
+
+
 saveBtn.addEventListener('click', appendList);
 
 filterInput.addEventListener('keyup', filterNames);
